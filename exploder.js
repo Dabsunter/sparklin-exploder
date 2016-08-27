@@ -10,7 +10,7 @@ function updateStatus(text){
 
 function setWord(w, i){
 	channel.socket.emit("setWord", {word: w.substring(0,i),validate: (w.length == i)});
-	if (i<w.length) {
+	if (i<w.length && injector.canWrite) {
 		setTimeout(function(){setWord(w,++i);},rand(75,175));
 	}
 }
@@ -20,8 +20,13 @@ function rand(min, max){
 }
 
 channel.socket.on("setActivePlayerIndex", function (a) {
-	if(channel.data.actors[channel.data.activePlayerIndex].authId === app.user.authId && injector.autoInject){
-		setTimeout(injector.inject,rand(400,1100));
+	if(channel.data.actors[channel.data.activePlayerIndex].authId === app.user.authId){
+		injector.canWrite = true
+		if (injector.autoInject) {
+			setTimeout(injector.inject,rand(400,1100));
+		}
+	} else {
+		injector.canWrite = false;
 	}
 });
 channel.socket.on("failWord", function (a) {
@@ -33,6 +38,7 @@ channel.socket.on("failWord", function (a) {
 var injector = {
 	lastWord: 0,
 	autoInject: false,
+	canWrite: false,
 
 	toggleAutoInject: function(){
 		if(injector.autoInject){
@@ -49,7 +55,7 @@ var injector = {
 			updateStatus("Injecting normally");
 			var q = new RegExp(channel.data.wordRoot,"i");
 			var i = injector.lastWord;
-			while(i != ++injector.lastWord){
+			while(i != ++injector.lastWord && injector.canWrite){
 				if(injector.lastWord==words.length){
 					injector.lastWord = 0;
 				}
