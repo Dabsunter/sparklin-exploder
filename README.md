@@ -1,14 +1,14 @@
 Sparklin Exploder
 =================
 A SparklinLabs's BombParty bot.
-But not just any, Sparklin Exploder is the better BombParty bot because he knows how to imitate humans !
+But not only, Sparklin Exploder is the best BombParty bot because he knows how to impersonate humans !
 
 Join the dark side now :smiling_imp:
 
 How to use it
 -------------
 1. Join a party on [BombParty Website](http://bombparty.sparklinlabs.com/).
-2. Right-click on the game canvas and "Inspect the element".
+2. Right-click on the game canvas and select "Inspect the element".
 
   ![Step 2](https://monosnap.com/file/8w6eJGVjAem03XmtuvDysvaoNM7lqU.png)
   
@@ -25,7 +25,7 @@ document.head.appendChild(exploder);﻿
   ![Step 4](https://monosnap.com/file/UTGNLwe9RWPCStwCwJoKoG3ybNGV7L.png)
   
 5. Now in the "Option" tab of the game, you have 2 buttons:
-  - **Inject:** Inject 1 word who corresponding to the given letters.
+  - **Inject:** Inject 1 word that corresponds to the given letters.
   - **Auto:** Automaticly inject words when the arrow is pointing you.
 
   ![Step 5](https://monosnap.com/file/y93lIKvygJrXvpNLMaNwARSXpXIxX6.png)
